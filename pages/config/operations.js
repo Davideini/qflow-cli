@@ -24,9 +24,7 @@ const TestAllExists = () => {
 };
 
 const RunConfig = allExists =>
-  allExists
-    ? configMenu$.subscribe()
-    : configNew$.switchMap(() => configMenu$).subscribe();
+  (allExists ? configMenu$() : configNew$().switchMap(configMenu$)).subscribe();
 
 module.exports = {
   TestAllExists,

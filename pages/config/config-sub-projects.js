@@ -1,17 +1,13 @@
 const inquirer = require('inquirer');
 const { joinCWD } = require('../../core/path-utility');
 const { titleCase, paramCase } = require('../../core/change-case-utility');
-const {
-  logger: { log, dash },
-  clear
-} = require('../../core/log-utility');
 const { save$, open$ } = require('../../core/fs-utility');
 const { toJson } = require('../../core/json-utility');
 const prompt = inquirer.createPromptModule();
 const { Observable } = require('rxjs/Rx');
-const { red, green } = require('chalk');
 const _ = require('lodash');
 const { analizePaths } = require('../../core/shell-utility');
+const { configNewSubTopLog, configReviewLog } = require('./ui');
 
 const values = require('../values.json');
 let projectSettings;
@@ -31,17 +27,11 @@ const configSubProjects$ = () =>
             .substr(1)
         )
     )
-    .do(() => {
-      clear();
-      log('>', dash);
-      log('Create', red('New sub project'));
-      log('>', dash);
-      console.log();
-    })
+    .do(configNewSubTopLog)
     .switchMap(files =>
       Observable.fromPromise(
         prompt([
-          {
+          {q
             type: 'list',
             message: 'Select page url',
             name: 'url',
@@ -79,16 +69,7 @@ const configSubProjects$ = () =>
     )
     .switchMap(workPages => Observable.from(workPages))
     .take(1)
-    .do(project => {
-      console.log();
-      log('>', dash);
-      log('Review new project', red(project.name));
-      _.keys(project).forEach(key =>
-        log('>', `${green(key)}:\t${project[key]}`)
-      );
-      log('>', dash);
-      console.log();
-    });
+    .do(configReviewLog);
 
 module.exports = {
   configSubProjects$
