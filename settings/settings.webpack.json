@@ -1,0 +1,12 @@
+{
+  "bundleFormat": "[name].bundle.js",
+  "vendorFormat": "[name].vendor.js",
+  "sourceMapFormat": "[name].map",
+  "libraryFormat": "[name]_[hash]",
+  "manifestFormat": "[name]-manifest.json",
+  "resourcePathFormat": "[resourcePath]",
+  "libraryTarget": "umd",
+  "extensions": [".js", ".ts"],
+  "defaultStylesCssFileName": "styles.css",
+  "defaultStylesCssPath": "css"
+}

@@ -1,0 +1,24 @@
+{
+  "isLibrary": false,
+  "defaultBlueprintsPath": "blueprints",
+  "defaultOutputPath": "dist",
+  "defaultSourcePath": "src",
+  "defaultStylesPath": "styles",
+  "angularCopyPath": "ng-cli-base",
+  "dasboardPage": {
+    "name": "Development Dashboard",
+    "path": "app-development",
+    "entry": "development.main.ts",
+    "url": null
+  },
+  "basicAngularFilesDirs": [
+    "polyfills.ts",
+    "environments",
+    "assets",
+    "styles",
+    "hmr.ts",
+    "tsconfig.app.json",
+    "typings.d.ts",
+    "index.html"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "qflow-cli",
+  "version": "1.0.89",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "git add -A -- . && git commit -m sync --quiet",
+    "start": "npm version patch && npm i -g"
+  },
+  "bin": {
+    "qflow-cli": "./index.js",
+    "qf": "./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/compiler": "5.2.10",
+    "@angular/core": "5.2.10",
+    "change-case": "3.0.2",
+    "commander": "2.15.1",
+    "glob": "7.1.2",
+    "inquirer": "5.2.0",
+    "lodash": "4.17.10",
+    "rxjs": "5.5.10",
+    "shelljs": "0.8.1"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.7.4",
+    "@angular/compiler-cli": "^5.2.10",
+    "autoprefixer": "8.4.1",
+    "browser-sync": "2.24.2",
+    "browser-sync-webpack-plugin": "2.2.2",
+    "child_process": "1.0.2",
+    "circular-dependency-plugin": "4.4.0",
+    "copy-webpack-plugin": "4.5.1",
+    "exports-loader": "0.7.0",
+    "extract-text-webpack-plugin": "3.0.2",
+    "figlet": "1.2.0",
+    "html-webpack-plugin": "3.2.0",
+    "node-sass": "4.9.0",
+    "postcss-import": "11.1.0",
+    "postcss-loader": "2.1.4",
+    "postcss-url": "7.3.2",
+    "raw-loader": "0.5.1",
+    "sass-loader": "7.0.1",
+    "style-loader": "0.21.0",
+    "try-require": "1.2.1",
+    "typescript": "2.6.2",
+    "webpack": "3.11.0",
+    "webpack-bundle-analyzer": "^2.11.1",
+    "webpack-merge": "4.1.2"
+  }
+}
