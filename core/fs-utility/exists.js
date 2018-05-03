@@ -12,18 +12,19 @@ const type = (path, exists) =>
   (exists && 'directory') ||
   'file or directory';
 
-const existsAll$ = filesArray => {
-  return Observable.of(null);
+const exists = path => {
+  const exists = existsSync(path);
+  const typeString = type(path, exists);
+
+  !exists && log(title, `${typeString}\tdosen't exists\t${red(path)}`);
+  exists && log(title, `${typeString}\texists\t\t${green(path)}`);
+
+  return exists;
 };
 
-module.exports = {
-  exists: path => {
-    const exists = existsSync(path);
-    const typeString = type(path, exists);
+const existsAll$ = filesArray =>
+  Observable.of(
+    filesArray.map(fileOrDir => exists(fileOrDir)).every(val => val)
+  );
 
-    !exists && log(title, `${typeString}\tdosen't exists\t${red(path)}`);
-    exists && log(title, `${typeString}\texists\t\t${green(path)}`);
-
-    return exists;
-  }
-};
+module.exports = { exists, existsAll$ };

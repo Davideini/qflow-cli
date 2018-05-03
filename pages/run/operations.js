@@ -48,14 +48,9 @@ const TestAllExists = () => {
   return true;
 };
 
-console.log('test', runMenu$);
-
 const run = allExists => allExists && runMenu$(projectSettings).subscribe();
-
-const configIfNotExists = projectSettings => existsAll$([]);
 
 module.exports = {
   TestAllExists,
-  run,
-  configIfNotExists
+  run
 };

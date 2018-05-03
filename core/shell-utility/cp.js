@@ -4,7 +4,11 @@ const assert = require('assert');
 const _ = require('lodash');
 
 const { green, white, red } = require('chalk');
-const { tabs, tabsText, logger: { log } } = require('../log-utility');
+const {
+  tabs,
+  tabsText,
+  logger: { log }
+} = require('../log-utility');
 const { analyze, lstat, exists, clearSrcPath } = require('../fs-utility');
 
 const { ls } = require('./ls');

@@ -6,9 +6,10 @@ const contextPath = innerPath => path.join(process.cwd(), innerPath);
 
 // const getFileName = (filePath)=>
 
-const joinCWD = (...paths) => path.join(process.cwd(), ...(paths || './'));
+const joinCWD = (...paths) => path.join(process.cwd(), ...(paths || ['./']));
+
 const joinThis = (...paths) =>
-  path.join(__dirname, '../../', ...(paths || './'));
+  path.join(__dirname, '../../', ...(paths || ['./']));
 
 module.exports = {
   innerDistPath,

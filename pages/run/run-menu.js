@@ -4,13 +4,14 @@ const chalk = require('chalk');
 const shell = require('shelljs');
 const prompt = inquirer.createPromptModule();
 const { Observable } = require('rxjs/Rx');
-const { cp, rm } = require('../../core/shell-utility');
+const { cp, rm, mv } = require('../../core/shell-utility');
 const { replaceInFile$ } = require('../../core/fs-utility');
 const { removeHotUpdates } = require('../../core/hmr-utility');
 const { clear } = require('../../core/log-utility');
 const { runTopLog } = require('./ui');
-const { configIfNotExists } = require('./operations');
 const _ = require('lodash');
+const { existsAll$ } = require('../../core/fs-utility');
+const { joinCWD, joinThis } = require('../../core/path-utility');
 
 const webpackFile = path.join(
   __dirname,
@@ -47,6 +48,37 @@ const findReplace = projectSettings => [
   }
 ];
 
+const configSubProject$ = projectSettings =>
+  Observable.of(
+    cp(joinThis('blueprints', 'ng-project-blueprint'), joinCWD('src'))
+  ).switchMap(() =>
+    mv([
+      {
+        from: joinCWD('src', 'app-blueprint'),
+        to: joinCWD('src', projectSettings.path)
+      },
+      {
+        from: joinCWD('src', 'main.app-blueprint.ts'),
+        to: joinCWD('src', `${projectSettings.entry}.ts`)
+      },
+      {
+        from: joinCWD('src', 'styles', 'app-blueprint.scss'),
+        to: joinCWD('src', 'styles', `${projectSettings.path}.scss`)
+      }
+    ])
+  );
+
+const configIfNotExists = projectSettings =>
+  existsAll$([
+    joinCWD('src', projectSettings.path),
+    joinCWD('src', `${projectSettings.entry}.ts`),
+    joinCWD('src', 'styles', `${projectSettings.path}.scss`)
+  ]).switchMap(
+    exists =>
+      (!exists && configSubProject$(projectSettings)) ||
+      Observable.of(projectSettings)
+  );
+
 module.exports = projectsSettings =>
   Observable.of(true)
     .do(runTopLog)
@@ -77,17 +109,21 @@ module.exports = projectsSettings =>
     .do(projectSettings =>
       removeHotUpdates(getStoragePath(projectSettings).replace(/\\/g, '\\\\'))
     )
-    .switchMap(configIfNotExists)
     .switchMap(projectSettings =>
-      replaceInFile$(webpackFile, findReplace(projectSettings)).do(
-        filePath => filePath,
-        err =>
-          console.log(chalk.red(`[ERROR] in file: ${webpackFile} => ${err}`)),
-        () =>
-          shell.exec(
-            `${__dirname}/node_modules/webpack --config ${webpackFile} --watch`
-          )
+      configIfNotExists(projectSettings).switchMap(existsAll =>
+        replaceInFile$(webpackFile, findReplace(projectSettings)).do(
+          filePath => filePath,
+          err =>
+            console.log(chalk.red(`[ERROR] in file: ${webpackFile} => ${err}`)),
+          () =>
+            shell.exec(
+              `${joinThis(
+                'node_modules/.bin/webpack'
+              )} --config ${webpackFile} --watch`
+            )
+        )
       )
     );
 
+console.log(`${__dirname}/node_modules/.bin/webpack`);
 // shell.exec(`webpack --config ${webpackFile} --watch`);
