@@ -1,3 +1,4 @@
 const shell = require('shelljs');
+const path = require('path');
 
-shell.exec('./bin/qflow-exe.exe');
+shell.exec(path.join(__dirname, './bin/qflow-exe.exe'));
