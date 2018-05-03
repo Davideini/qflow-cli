@@ -1,6 +1,6 @@
 {
   "name": "qflow-cli",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "QFlow tool for angular projects",
   "bin": {
     "qflow-cli": "./index.js",
