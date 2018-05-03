@@ -29,5 +29,8 @@ const webpackFile = path.join(
 console.log(`${__dirname}/node_modules/webpack`);
 
 shell.exec(
-  `${path(__dirname, './node_modules/webpack')} --config ${webpackFile} --watch`
+  `${path.join(
+    __dirname,
+    './node_modules/webpack'
+  )} --config ${webpackFile} --watch`
 );
