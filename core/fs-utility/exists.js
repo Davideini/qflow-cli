@@ -1,5 +1,6 @@
 const { existsSync } = require('fs');
 const { green, red } = require('chalk');
+const { Observable } = require('rxjs/Observable');
 
 const { log } = require('../log-utility/logger');
 const { lstat } = require('./lstat');
@@ -10,6 +11,10 @@ const type = (path, exists) =>
   (exists && (lstat(path).isFile() && 'file\t')) ||
   (exists && 'directory') ||
   'file or directory';
+
+const existsAll$ = filesArray => {
+  return Observable.of(null);
+};
 
 module.exports = {
   exists: path => {

@@ -1,18 +1,26 @@
-const { red, white, green } = require('chalk');
-const { messagesFrame, messagesContainer } = require('../../core/ui-utility');
 const {
-  logger: { dash, newLine }
+  red,
+  white,
+  green
+} = require('chalk');
+const {
+  messagesFrame,
+  messagesContainer
+} = require('../../core/ui-utility');
+const {
+  logger: {
+    dash,
+    newLine
+  }
 } = require('../../core/log-utility');
 
 const topLog = () =>
-  messagesFrame([
-    {
-      subject: 'New Project',
-      message: white(
-        `Copy files from ${red('ng-cli-blueprint')} & ${red('dev-files')}`
-      )
-    }
-  ]);
+  messagesFrame([{
+    subject: 'New Project',
+    message: white(
+      `Copy files from ${red('ng-cli-blueprint')} & ${red('dev-files')}`
+    )
+  }]);
 
 const bottomLog = result =>
   messagesContainer([

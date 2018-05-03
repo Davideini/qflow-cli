@@ -8,7 +8,8 @@ const { cp, rm } = require('../../core/shell-utility');
 const { replaceInFile$ } = require('../../core/fs-utility');
 const { removeHotUpdates } = require('../../core/hmr-utility');
 const { clear } = require('../../core/log-utility');
-
+const { runTopLog } = require('./ui');
+const { configIfNotExists } = require('./operations');
 const _ = require('lodash');
 
 const webpackFile = path.join(
@@ -19,14 +20,8 @@ const webpackFile = path.join(
 rm(webpackFile);
 cp(path.join(__dirname, '../../webpack/webpack.config.dev.js'), webpackFile);
 
-const getStoragePath = settings => {
-  // console.log(settings)
-  return path.join(
-    settings.qflowIISPath,
-    settings.storagePath,
-    settings.storage
-  );
-};
+const getStoragePath = settings =>
+  path.join(settings.qflowIISPath, settings.storagePath, settings.storage);
 
 const getStorageUrl = settings =>
   `${settings.qflowIISHost}${settings.storagePath.replace(/\\/g, '/')}/${
@@ -54,6 +49,7 @@ const findReplace = projectSettings => [
 
 module.exports = projectsSettings =>
   Observable.of(true)
+    .do(runTopLog)
     .switchMap(() =>
       Observable.fromPromise(
         prompt([
@@ -81,7 +77,7 @@ module.exports = projectsSettings =>
     .do(projectSettings =>
       removeHotUpdates(getStoragePath(projectSettings).replace(/\\/g, '\\\\'))
     )
-
+    .switchMap(configIfNotExists)
     .switchMap(projectSettings =>
       replaceInFile$(webpackFile, findReplace(projectSettings)).do(
         filePath => filePath,
