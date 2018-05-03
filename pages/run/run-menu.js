@@ -87,7 +87,10 @@ module.exports = projectsSettings =>
         filePath => filePath,
         err =>
           console.log(chalk.red(`[ERROR] in file: ${webpackFile} => ${err}`)),
-        () => shell.exec(`webpack --config ${webpackFile} --watch`)
+        () =>
+          shell.exec(
+            `${__dirname}/node_modules/webpack --config ${webpackFile} --watch`
+          )
       )
     );
 
