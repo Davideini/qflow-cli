@@ -8,6 +8,11 @@
   },
   "author": "David Eini",
   "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "git add -A -- . && git commit -m sync --quiet",
+    "start": "npm version patch && npm i -g"
+  },
   "dependencies": {
     "browser-sync-webpack-plugin": "2.2.2",
     "change-case": "3.0.2",
