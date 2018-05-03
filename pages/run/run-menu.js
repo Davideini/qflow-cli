@@ -118,12 +118,11 @@ module.exports = projectsSettings =>
           () =>
             shell.exec(
               `${joinThis(
-                'node_modules/.bin/webpack'
+                './node_modules/.bin/webpack'
               )} --config ${webpackFile} --watch`
             )
         )
       )
     );
 
-console.log(`${__dirname}/node_modules/.bin/webpack`);
 // shell.exec(`webpack --config ${webpackFile} --watch`);
