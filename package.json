@@ -9,8 +9,6 @@
   "author": "David Eini",
   "license": "MIT",
   "dependencies": {
-    "@angular/compiler": "5.2.10",
-    "@angular/core": "5.2.10",
     "browser-sync-webpack-plugin": "2.2.2",
     "change-case": "3.0.2",
     "commander": "2.15.1",
@@ -22,8 +20,6 @@
     "shelljs": "0.8.1"
   },
   "devDependencies": {
-    "@angular/cli": "^1.7.4",
-    "@angular/compiler-cli": "5.2.10",
     "autoprefixer": "8.4.1",
     "browser-sync": "2.24.2",
     "child_process": "1.0.2",
