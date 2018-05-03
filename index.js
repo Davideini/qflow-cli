@@ -10,6 +10,7 @@ commander
   .version(package.version)
   .command('new', 'create angular project')
   .command('create', 'create sub project files')
+  .command('exe', 'run .exe console aplication')
   .command('run', 'run angular project')
   .command('resource', 'find plain text and create resource files')
   .command('build', 'build angular project for production')
