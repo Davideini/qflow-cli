@@ -35,4 +35,4 @@ console.log(`${__dirname}/node_modules/webpack`);
 //   )} --config ${webpackFile} --watch`
 // );
 
-shell.exec(`${path.join(__dirname, './node_modules/webpack')} --help`);
+shell.exec(`${path.join(__dirname, './node_modules/.bin/webpack')} --help`);
