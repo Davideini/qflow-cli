@@ -5,9 +5,9 @@ const webpackConfig = require('./dist/webpack.config.dev');
 const { defaultSourcePath } = require('../settings/settings.development.json');
 
 module.exports = webpackConfig(
-  'app-independent-operational-unit',
-  'main.independent-operational-unit',
+  '[app name]',
+  '[app main entry]',
   joinCWD(defaultSourcePath),
-  'http://localhost/QFlow59SP4_Moh_Midur/System/FileStore/CustomPages/IndependentOperationalUnit/UnitsManager',
-  'C:\\inetpub\\wwwroot\\QFlow59SP4_Moh_Midur\\System\\FileStore\\CustomPages\\IndependentOperationalUnit\\UnitsManager'
+  '[public path]',
+  '[dist path]'
 );

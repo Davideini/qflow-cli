@@ -16,7 +16,6 @@ commander
   .command('build', 'build angular project for production')
   .command('config', 'config q-flow project')
   .command('clean-npm', 'remove node_modules')
-  .command('test', 'playground for scripts')
   .option('--vendor', 'Compile vendors')
   .option('--clear-vendor', 'Clear vendors')
   .parse(process.argv);

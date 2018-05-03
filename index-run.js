@@ -18,6 +18,9 @@ const projectSettingsPath = path.join(
   values.projectSettingsFileName
 );
 
+const packagePath = path.join(process.cwd(), values.package);
+
+const packageJson = tryRequire(packagePath);
 const projectSettings = tryRequire(projectSettingsPath);
 
 clear();
@@ -27,8 +30,13 @@ exists(joinCWD('package.json'));
 exists(projectSettingsPath);
 console.log();
 
+if (!packageJson) {
+  log('Require', `Please run ${green('qf new')}`);
+  process.exit();
+}
+
 if (!projectSettings) {
-  log('Require', `Please run ${green('qf config --project')}`);
+  log('Require', `Please run ${green('qf config')}`);
   process.exit();
 }
 

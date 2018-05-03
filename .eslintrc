@@ -81,7 +81,7 @@
     "no-tabs": "error",
     "no-template-curly-in-string": "warn",
     "no-trailing-spaces": "error",
-    "no-undefined": "error",
+    "no-undefined": "off",
     "no-fallthrough": "off",
     "no-underscore-dangle": [
       "error",

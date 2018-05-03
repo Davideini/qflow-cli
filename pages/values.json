@@ -1,5 +1,6 @@
 {
   "rootDisc": "C:",
   "projectSettingsFileName": "project.settings.json",
-  "localhostRegex": "http://localhost/"
+  "localhostRegex": "http://localhost/",
+  "package": "package.json"
 }
