@@ -31,7 +31,7 @@ const configSubProjects$ = () =>
     .switchMap(files =>
       Observable.fromPromise(
         prompt([
-          {q
+          {
             type: 'list',
             message: 'Select page url',
             name: 'url',
