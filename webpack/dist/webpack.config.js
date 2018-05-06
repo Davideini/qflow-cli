@@ -6,8 +6,6 @@ const { joinCWD } = require('../../core/path-utility');
 const { CommonsChunkPlugin } = require('webpack').optimize;
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
-const { joinCWD } = require('../../core/path-utility');
-
 const { BaseHrefWebpackPlugin } = require(joinCWD(
   'node_modules',
   '@angular/cli/plugins/webpack'
