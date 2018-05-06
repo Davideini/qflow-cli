@@ -6,7 +6,11 @@ const { joinCWD } = require('../../core/path-utility');
 const { CommonsChunkPlugin } = require('webpack').optimize;
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
-const { BaseHrefWebpackPlugin } = require('@angular/cli/plugins/webpack');
+const { BaseHrefWebpackPlugin } = require(joinCWD(
+  'node_modules',
+  '@angular/cli/plugins/webpack'
+));
+
 const { htmlWebpack, copyWebpack } = require('../core');
 
 const { angularVendor, bootstrapVendor, rxjsVendor } = require('../vendors');

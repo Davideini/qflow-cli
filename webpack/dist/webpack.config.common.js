@@ -4,9 +4,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const rxPaths = require('rxjs/_esm5/path-mapping');
 const path = require('path');
 const postcssPlugins = require('../plugins/postcss.plugins');
-const {
-  NamedLazyChunksWebpackPlugin
-} = require('@angular/cli/plugins/webpack');
+
+const { joinCWD } = require('../../core/path-utility');
+
+const { NamedLazyChunksWebpackPlugin } = require(joinCWD(
+  'node_modules',
+  '@angular/cli/plugins/webpack'
+));
 
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 

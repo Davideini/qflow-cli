@@ -3,7 +3,10 @@ const postcssUrl = require('postcss-url');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 
-const { PostcssCliResources } = require('@angular/cli/plugins/webpack');
+const { PostcssCliResources } = require(joinCWD(
+  'node_modules',
+  '@angular/cli/plugins/webpack'
+));
 
 const baseHref = '';
 const deployUrl = '';
@@ -19,27 +22,23 @@ module.exports = projectRoot => loader => [
           url = url.substr(1);
           hadTilde = true;
         }
-        loader.resolve(
-          context,
-          (hadTilde ? '' : './') + url,
-          (err, result) => {
-            if (err) {
-              if (hadTilde) {
-                reject(err);
-                return;
-              }
-              loader.resolve(context, url, (err, result) => {
-                if (err) {
-                  reject(err);
-                } else {
-                  resolve(result);
-                }
-              });
-            } else {
-              resolve(result);
+        loader.resolve(context, (hadTilde ? '' : './') + url, (err, result) => {
+          if (err) {
+            if (hadTilde) {
+              reject(err);
+              return;
             }
+            loader.resolve(context, url, (err, result) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(result);
+              }
+            });
+          } else {
+            resolve(result);
           }
-        );
+        });
       });
     },
     load: filename => {

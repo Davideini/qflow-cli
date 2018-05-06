@@ -14,7 +14,6 @@
     "start": "npm version patch && npm i -g"
   },
   "dependencies": {
-    "@angular/cli": "^1.7.4",
     "autoprefixer": "8.4.1",
     "browser-sync": "2.24.4",
     "browser-sync-webpack-plugin": "2.2.2",
