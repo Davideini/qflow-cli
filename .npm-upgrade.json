@@ -1,0 +1,20 @@
+{
+  "ignore": {
+    "circular-dependency-plugin": {
+      "versions": "5.0.2",
+      "reason": ""
+    },
+    "rxjs": {
+      "versions": "6.1.0",
+      "reason": ""
+    },
+    "typescript": {
+      "versions": "2.8.3",
+      "reason": ""
+    },
+    "webpack": {
+      "versions": "4.7.0",
+      "reason": ""
+    }
+  }
+}
