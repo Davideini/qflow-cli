@@ -3,6 +3,8 @@ const postcssUrl = require('postcss-url');
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 
+const { joinCWD } = require('../../core/path-utility');
+
 const { PostcssCliResources } = require(joinCWD(
   'node_modules',
   '@angular/cli/plugins/webpack'
