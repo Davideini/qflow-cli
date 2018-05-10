@@ -103,7 +103,7 @@ const configSubProject$ = projectSettings =>
       }
     ])
   )
-  .mergeMap(replaseInFiles$(projectSettings));
+  .mergeMap(() => replaseInFiles$(projectSettings));
 
 const configIfNotExists = projectSettings =>
   existsAll$([
