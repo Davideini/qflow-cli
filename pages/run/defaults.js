@@ -1,6 +1,12 @@
-const { titleCase } = require('../../core/change-case-utility');
-const { gatAnswers } = require('../../core/inquirer-utility');
-const { lsDirs } = require('../../core/shell-utility');
+const {
+  titleCase
+} = require('../../core/change-case-utility');
+const {
+  gatAnswers
+} = require('../../core/inquirer-utility');
+const {
+  lsDirs
+} = require('../../core/shell-utility');
 const {
   currentDirectoryName,
   baseFileStoragePath

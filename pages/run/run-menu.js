@@ -64,8 +64,22 @@ const findReplace = projectSettings => [{
   {
     from: '[public path]',
     to: getStorageUrl(projectSettings)
+  },
+  {
+    from: './app/app.module',
+    to: `./${projectSettings.path}/app.module`
+  },
+  {
+    from: '[IIS Host]',
+    to: `./${projectSettings.qflowIISHost}`
   }
 ];
+
+const replaseInFiles$ = projectSettings => [
+  replaceInFile$(joinCWD('src', projectSettings.path), findReplace(projectSettings)),
+  replaceInFile$(joinCWD('src', `${projectSettings.entry}.ts`), findReplace(projectSettings)),
+  replaceInFile$(joinCWD('src', `README.${projectSettings.entry}.md`), findReplace(projectSettings)),
+]
 
 const configSubProject$ = projectSettings =>
   Observable.of(
@@ -88,7 +102,8 @@ const configSubProject$ = projectSettings =>
         to: joinCWD('src', 'styles', `${projectSettings.path}.scss`)
       }
     ])
-  );
+  )
+  .mergeMap(replaseInFiles$(projectSettings));
 
 const configIfNotExists = projectSettings =>
   existsAll$([

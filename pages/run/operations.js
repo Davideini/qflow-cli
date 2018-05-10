@@ -1,15 +1,24 @@
 const path = require('path');
 const tryRequire = require('try-require');
-const { green } = require('chalk');
+const {
+  green
+} = require('chalk');
 
-const { exists, existsAll$ } = require('../../core/fs-utility');
-const { joinCWD } = require('../../core/path-utility');
+const {
+  exists,
+  existsAll$
+} = require('../../core/fs-utility');
+const {
+  joinCWD
+} = require('../../core/path-utility');
 const runMenu$ = require('./run-menu');
 
 const values = require('../values.json');
 
 const {
-  logger: { log }
+  logger: {
+    log
+  }
 } = require('../../core/log-utility');
 
 const packagePath = path.join(process.cwd(), values.package);
@@ -48,7 +57,8 @@ const TestAllExists = () => {
   return true;
 };
 
-const run = allExists => allExists && runMenu$(projectSettings).subscribe();
+const run = allExists => allExists && runMenu$(projectSettings)
+  .subscribe();
 
 module.exports = {
   TestAllExists,

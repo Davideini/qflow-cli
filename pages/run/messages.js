@@ -1,5 +1,11 @@
-const { red, green, yellow } = require('chalk');
-const { baseFileStoragePath } = require('../../core/fs-utility');
+const {
+  red,
+  green,
+  yellow
+} = require('chalk');
+const {
+  baseFileStoragePath
+} = require('../../core/fs-utility');
 
 const messagesFunctions = {
   storagePath: iisFolder =>
