@@ -103,7 +103,8 @@ const configSubProject$ = projectSettings =>
       }
     ])
   )
-  .flatMap(() => replaseInFiles$(projectSettings));
+  .flatMap(() => replaseInFiles$(projectSettings)
+    .do(console.log));
 
 const configIfNotExists = projectSettings =>
   existsAll$([

@@ -5,9 +5,9 @@ const webpackConfig = require('./dist/webpack.config.dev');
 const { defaultSourcePath } = require('../settings/settings.development.json');
 
 module.exports = webpackConfig(
-  '[app name]',
-  '[app main entry]',
+  'app-avatar-project',
+  'main.avatar-project',
   joinCWD(defaultSourcePath),
-  '[public path]',
-  '[dist path]'
+  'http://localhost/QFlow59SP4_Moh_Midur/System/FileStore/QflowProject//AvatarProject',
+  'C:\\inetpub\\wwwroot\\QFlow59SP4_Moh_Midur\\System\\FileStore\\QflowProject\\AvatarProject'
 );
