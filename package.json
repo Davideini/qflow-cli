@@ -15,10 +15,10 @@
   },
   "repository": "https://github.com/Davideini/qflow-cli",
   "bugs": "https://github.com/Davideini/qflow-cli/issues",
-  "keywords": [
-    "qflow-cli",
-    "q-flow"
-  ],
+  "keywords": ["qflow-cli", "q-flow"],
+  "engines": {
+    "node": ">=8"
+  },
   "dependencies": {
     "autoprefixer": "8.4.1",
     "browser-sync": "2.24.4",
@@ -32,7 +32,7 @@
     "extract-text-webpack-plugin": "3.0.2",
     "figlet": "1.2.0",
     "glob": "7.1.2",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "3.2.0",
     "inquirer": "5.2.0",
     "lodash": "4.17.10",
     "node-sass": "4.9.0",
@@ -41,12 +41,12 @@
     "postcss-url": "7.3.2",
     "raw-loader": "0.5.1",
     "rxjs": "5.5.10",
-    "sass-loader": "^7.0.1",
+    "sass-loader": "7.0.1",
     "shelljs": "0.8.1",
-    "style-loader": "^0.21.0",
+    "style-loader": "0.21.0",
     "try-require": "1.2.1",
     "typescript": "2.6.2",
-    "uglifyjs-webpack-plugin": "^1.2.5",
+    "uglifyjs-webpack-plugin": "1.2.5",
     "webpack": "3.11.0",
     "webpack-bundle-analyzer": "2.11.1",
     "webpack-merge": "4.1.2"
