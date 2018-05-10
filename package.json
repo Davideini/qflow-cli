@@ -15,13 +15,7 @@
   },
   "repository": "https://github.com/Davideini/qflow-cli",
   "bugs": "https://github.com/Davideini/qflow-cli/issues",
-  "keywords": [
-    "qflow-cli",
-    "q-flow"
-  ],
-  "engines": {
-    "node": ">=8"
-  },
+  "keywords": ["qflow-cli", "q-flow"],
   "dependencies": {
     "autoprefixer": "8.4.1",
     "browser-sync": "2.24.4",
