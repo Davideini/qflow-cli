@@ -44,9 +44,9 @@ const getStoragePath = settings =>
   path.join(settings.qflowIISPath, settings.storagePath, settings.storage);
 
 const getStorageUrl = settings =>
-  `${settings.qflowIISHost}${settings.storagePath.replace(/\\/g, '/')}/${
+  `${settings.qflowIISHost}${settings.storagePath.replace(/\\+/g, '/')}/${
     settings.storage
-  }`;
+  }`.replace(/\/+/g, '/');
 
 const findReplace = projectSettings => [{
     from: '[dist path]',
@@ -71,7 +71,13 @@ const findReplace = projectSettings => [{
   },
   {
     from: /\[IIS Host\]/g,
-    to: `${projectSettings.qflowIISHost}`
+    to: `${projectSettings.qflowIISHost.substr(0, projectSettings.qflowIISHost.length - 1)}`
+  },
+  {
+    from: /\[IIS Storage\]/g,
+    to: `${projectSettings.storagePath.replace(/\\+/g, '/')}/${
+      projectSettings.storage
+    }`.replace(/\/+/g, '/')
   }
 ];
 
