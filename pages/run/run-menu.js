@@ -71,11 +71,11 @@ const findReplace = projectSettings => [{
   },
   {
     from: /\[IIS Host\]/g,
-    to: `${projectSettings.qflowIISHost.substr(0, projectSettings.qflowIISHost.length - 1)}`
+    to: `${projectSettings.qflowIISHost.replace('localhost', 'localhost:3000')}`
   },
   {
     from: /\[IIS Storage\]/g,
-    to: `${projectSettings.storagePath.replace(/\\+/g, '/')}/${
+    to: `../${projectSettings.storagePath.replace(/\\+/g, '/')}/${
       projectSettings.storage
     }`.replace(/\/+/g, '/')
   }
