@@ -98,7 +98,6 @@ const configSubProject$ = projectSettings =>
       }
     ])
   )
-  .switchMap(() => replaceInFile$(joinCWD('src', projectSettings.path), findReplace(projectSettings)))
   .switchMap(() => replaceInFile$(joinCWD('src', `${projectSettings.entry}.ts`), findReplace(projectSettings)))
   .switchMap(() => replaceInFile$(joinCWD('src', `README.${projectSettings.entry}.md`), findReplace(projectSettings)));
 
