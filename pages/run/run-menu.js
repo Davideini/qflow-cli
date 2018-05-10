@@ -99,14 +99,14 @@ const configSubProject$ = projectSettings =>
     ])
   )
   .switchMap(() => replaceInFile$(joinCWD('src', `${projectSettings.entry}.ts`), findReplace(projectSettings)))
-  .switchMap(() => replaceInFile$(joinCWD('src', `README.${projectSettings.entry}.md`), findReplace(projectSettings)));
-.switchMap(() => replaceInFile$(joinCWD('src', `README.${projectSettings.entry}.md`), [{
-  from: projectSettings.qflowIISHost,
-  to: '../'
-}, {
-  from: /\/+/,
-  to: '/'
-}]));
+  .switchMap(() => replaceInFile$(joinCWD('src', `README.${projectSettings.entry}.md`), findReplace(projectSettings)))
+  .switchMap(() => replaceInFile$(joinCWD('src', `README.${projectSettings.entry}.md`), [{
+    from: projectSettings.qflowIISHost,
+    to: '../'
+  }, {
+    from: /\/+/,
+    to: '/'
+  }]));
 
 const configIfNotExists = projectSettings =>
   existsAll$([
