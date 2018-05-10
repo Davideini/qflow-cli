@@ -75,11 +75,6 @@ const findReplace = projectSettings => [{
   }
 ];
 
-const replaseInFiles$ = projectSettings => [
-  replaceInFile$(joinCWD('src', projectSettings.path), findReplace(projectSettings)),
-  replaceInFile$(joinCWD('src', `${projectSettings.entry}.ts`), findReplace(projectSettings)),
-  replaceInFile$(joinCWD('src', `README.${projectSettings.entry}.md`), findReplace(projectSettings)),
-]
 
 const configSubProject$ = projectSettings =>
   Observable.of(
@@ -103,21 +98,21 @@ const configSubProject$ = projectSettings =>
       }
     ])
   )
-  .do(() => replaseInFiles$(projectSettings)
-    .forEach(obs => obs.do(console.log)
-      .subscribe()));
+  .switchMap(() => replaceInFile$(joinCWD('src', projectSettings.path), findReplace(projectSettings))),
+  .switchMap(() => replaceInFile$(joinCWD('src', `${projectSettings.entry}.ts`), findReplace(projectSettings))),
+  .switchMap(() => replaceInFile$(joinCWD('src', `README.${projectSettings.entry}.md`), findReplace(projectSettings))),
 
-const configIfNotExists = projectSettings =>
-  existsAll$([
-    joinCWD('src', projectSettings.path),
-    joinCWD('src', `${projectSettings.entry}.ts`),
-    joinCWD('src', 'styles', `${projectSettings.path}.scss`)
-  ])
-  .switchMap(
-    exists =>
-    (!exists && configSubProject$(projectSettings)) ||
-    Observable.of(projectSettings)
-  );
+  const configIfNotExists = projectSettings =>
+    existsAll$([
+      joinCWD('src', projectSettings.path),
+      joinCWD('src', `${projectSettings.entry}.ts`),
+      joinCWD('src', 'styles', `${projectSettings.path}.scss`)
+    ])
+    .switchMap(
+      exists =>
+      (!exists && configSubProject$(projectSettings)) ||
+      Observable.of(projectSettings)
+    );
 
 module.exports = projectsSettings =>
   Observable.of(true)
