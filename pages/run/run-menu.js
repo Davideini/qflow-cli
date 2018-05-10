@@ -46,7 +46,7 @@ const getStoragePath = settings =>
 const getStorageUrl = settings =>
   `${settings.qflowIISHost}${settings.storagePath.replace(/\\+/g, '/')}/${
     settings.storage
-  }`.replace(/\/+/g, '/');
+  }`;
 
 const findReplace = projectSettings => [{
     from: '[dist path]',
