@@ -8,6 +8,6 @@
 $(document).ready(function() {
   $('body')
     .find('[id*=pnlTabBody]')
-    .append($('<div>').load('[public path]index.html', function() {}));
+    .append($('<div>').load('[public path]/index.html', function() {}));
 });
 ```
