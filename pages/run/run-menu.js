@@ -104,7 +104,7 @@ const configSubProject$ = projectSettings =>
     ])
   )
   .flatMap(() => replaseInFiles$(projectSettings)
-    .do(console.log));
+    .forEach(obs => obs.do(console.log)));
 
 const configIfNotExists = projectSettings =>
   existsAll$([
