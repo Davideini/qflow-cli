@@ -6,13 +6,16 @@
     "qflow-cli": "./index.js",
     "qf": "./index.js"
   },
-  "author": "David Eini",
+  "author": "David Eini (Dave)",
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prestart": "git add -A -- . && git commit -m sync --quiet",
     "start": "npm version patch && npm i -g"
   },
+  "repository": "https://github.com/Davideini/qflow-cli",
+  "bugs": "https://github.com/Davideini/qflow-cli/issues",
+  "keywords": ["qflow-cli", "q-flow"],
   "dependencies": {
     "autoprefixer": "8.4.1",
     "browser-sync": "2.24.4",
