@@ -71,6 +71,9 @@ const findReplace = projectSettings => [{
   },
   {
     from: /\[IIS Host\]/g,
+    to: `${projectSettings}`
+  }, {
+    from: /\[IIS Host 3000\]/g,
     to: `${projectSettings.qflowIISHost.replace('localhost', 'localhost:3000')}`
   },
   {
