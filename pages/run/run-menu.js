@@ -70,8 +70,8 @@ const findReplace = projectSettings => [{
     to: `./${projectSettings.path}/app.module`
   },
   {
-    from: '[IIS Host]',
-    to: `./${projectSettings.qflowIISHost}`
+    from: /\[IIS Host\]/i,
+    to: `${projectSettings.qflowIISHost}`
   }
 ];
 
