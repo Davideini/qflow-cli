@@ -1,6 +1,6 @@
 {
   "name": "qflow-cli",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "description": "QFlow tool for angular projects",
   "bin": {
     "qflow-cli": "./index.js",
@@ -15,7 +15,10 @@
   },
   "repository": "https://github.com/Davideini/qflow-cli",
   "bugs": "https://github.com/Davideini/qflow-cli/issues",
-  "keywords": ["qflow-cli", "q-flow"],
+  "keywords": [
+    "qflow-cli",
+    "q-flow"
+  ],
   "dependencies": {
     "autoprefixer": "8.4.1",
     "browser-sync": "2.24.4",
