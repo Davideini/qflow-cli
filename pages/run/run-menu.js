@@ -103,8 +103,9 @@ const configSubProject$ = projectSettings =>
       }
     ])
   )
-  .flatMap(() => replaseInFiles$(projectSettings)
-    .forEach(obs => obs.do(console.log)));
+  .do(() => replaseInFiles$(projectSettings)
+    .forEach(obs => obs.do(console.log)
+      .subscribe()));
 
 const configIfNotExists = projectSettings =>
   existsAll$([
