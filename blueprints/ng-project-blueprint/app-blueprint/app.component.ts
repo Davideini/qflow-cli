@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/observable/fromPromise';
@@ -23,15 +22,5 @@ import 'rxjs/add/operator/retryWhen';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(
-    private jqueryUtilsService: JqueryUtilsService,
-    private translateService: TranslateService
-  ) {
-    // this language will be used as a fallback when a translation isn't found in the current language
-    translateService.setDefaultLang('he');
-
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
-    translateService.use('he');
-    // translateService.
-  }
+  constructor() {}
 }
