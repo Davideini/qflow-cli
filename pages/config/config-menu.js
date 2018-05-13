@@ -22,8 +22,8 @@ const projectSettings =
 
 const mapAnswers$ = answers => {
   switch (answers.menu) {
-    case 'Edit project.setings.json':
-      return configEdit$;
+    // case 'Edit project.setings.json':
+    //   return configEdit$;
 
     case 'Create/Edit sub projects':
       return configSubProjects$().take(1);

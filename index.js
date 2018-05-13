@@ -9,15 +9,15 @@ const package = require('./package.json');
 commander
   .version(package.version)
   .command('new', 'create angular project')
-  .command('create', 'create sub project files')
-  .command('exe', 'run .exe console aplication')
+  // .command('create', 'create sub project files')
+  // .command('exe', 'run .exe console aplication')
   .command('run', 'run angular project')
-  .command('resource', 'find plain text and create resource files')
-  .command('build', 'build angular project for production')
+  // .command('resource', 'find plain text and create resource files')
+  // .command('build', 'build angular project for production')
   .command('config', 'config q-flow project')
-  .command('clean-npm', 'remove node_modules')
-  .option('--vendor', 'Compile vendors')
-  .option('--clear-vendor', 'Clear vendors')
+  // .command('clean-npm', 'remove node_modules')
+  // .option('--vendor', 'Compile vendors')
+  // .option('--clear-vendor', 'Clear vendors')
   .parse(process.argv);
 
 let webpackFile;

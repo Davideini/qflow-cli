@@ -22,7 +22,7 @@ module.exports = {
   qflowIISPath: qflowIISPaths,
   ...defaultsFunctions,
   menu: [
-    'Edit project.setings.json',
+    // 'Edit project.setings.json',
     'Create/Edit sub projects',
     chalk.red('** exit **')
   ]
