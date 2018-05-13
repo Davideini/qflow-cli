@@ -3,7 +3,7 @@ const { green } = require('chalk');
 const { exists } = require('../../core/fs-utility');
 const { joinCWD } = require('../../core/path-utility');
 const {
-  logger: { log }
+  logger: { log },clear
 } = require('../../core/log-utility');
 const configNew$ = require('./config-new');
 const configMenu$ = require('./config-menu');
@@ -16,6 +16,7 @@ const TestAllExists = () => {
   const existsPackage = exists(joinCWD(values.package));
 
   if (!existsPackage) {
+    clear();
     log('Require', `Please run ${green('qf new')}`);
     process.exit();
   }

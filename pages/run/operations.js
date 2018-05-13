@@ -18,7 +18,7 @@ const values = require('../values.json');
 const {
   logger: {
     log
-  }
+  },clear
 } = require('../../core/log-utility');
 
 const packagePath = path.join(process.cwd(), values.package);
@@ -35,20 +35,23 @@ const TestAllExists = () => {
   const projectSettingsExists = exists(projectSettingsPath);
 
   if (!packageJsonExists) {
+    clear();
     log('Require', `Please run ${green('qf new')}`);
     process.exit();
   }
 
   if (!projectSettingsExists) {
+    clear();
     log('Require', `Please run ${green('qf config')}`);
     process.exit();
   }
 
   if (!projectSettings.workPages || !projectSettings.workPages.length) {
+    clear();
     log(
       'Require',
       `Please config at least one project, run ${green(
-        'qf config --sub-project'
+        'qf config'
       )}`
     );
     process.exit();
