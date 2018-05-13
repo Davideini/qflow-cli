@@ -16,7 +16,7 @@
   "repository": "https://github.com/Davideini/qflow-cli",
   "bugs": "https://github.com/Davideini/qflow-cli/issues",
   "dependencies": {
-    "autoprefixer": "8.4.1",
+    "autoprefixer": "8.5.0",
     "browser-sync": "2.24.4",
     "browser-sync-webpack-plugin": "2.2.2",
     "change-case": "3.0.2",
@@ -38,13 +38,13 @@
     "raw-loader": "0.5.1",
     "rxjs": "5.5.10",
     "sass-loader": "7.0.1",
-    "shelljs": "0.8.1",
+    "shelljs": "0.8.2",
     "style-loader": "0.21.0",
     "try-require": "1.2.1",
     "typescript": "2.6.2",
     "uglifyjs-webpack-plugin": "1.2.5",
     "webpack": "3.11.0",
-    "webpack-bundle-analyzer": "2.11.1",
+    "webpack-bundle-analyzer": "2.11.3",
     "webpack-merge": "4.1.2"
   },
   "devDependencies": {}
